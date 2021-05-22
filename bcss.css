@@ -1,0 +1,111 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 75px;
+    perspective: 10em;
+    perspective-origin: 50% calc(50% - 2.5em);
+}
+:root {
+    --boxcolor:#ffcd28;
+    --rotspeed:30s;
+    --ballb:1.5s;
+    --box:#000a;
+}
+.scen{
+    position: relative;
+    transform-style: preserve-3d;
+    animation: scen var(--rotspeed) infinite linear;
+} 
+@keyframes scen {
+    to {transform: rotateY(360deg);}
+}
+.ball{
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: var(--boxcolor);
+    position: absolute;
+    left: -.5em;
+    bottom: 1em;
+    background-image: radial-gradient(
+        circle at top,
+        var(--boxcolor),#000
+    );
+    animation:
+    ballb var(--ballb) infinite ease-out,
+    scen var(--rotspeed) infinite linear reverse;
+}
+@keyframes ballb {
+    0% ,100%{bottom: 0.5em;}
+    50%{bottom: 3em; animation-timing-function: ease-in;}
+}
+.ballshadow{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#0008, #0000 50% );
+    animation: balls var(--ballb) infinite ease-out;
+}
+@keyframes balls {
+    0%, 8%, 93.5%, 100%{transform: scale(1); opacity: 1;}
+    50%{transform: scale(2); opacity: 0.5; animation-timing-function: ease-in;}
+}
+.cube{
+    width: 2em;
+    height: 2em;
+    transform-style: preserve-3d;
+    position: absolute;
+    bottom: -1em;
+    left: -1em; 
+    animation: cubes var(--ballb) infinite linear;
+}
+@keyframes cubes {
+    0% ,100%{height: 1.5em;}
+    8%, 93.5%{height: 2em;}
+}
+.left, .right, .front, .back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(99, 99, 99);
+    opacity: .7;
+    box-shadow: 0 0 0.5em var(--box) inset;
+}
+.front{transform: translateZ(1em);}
+.right{transform: rotateY(90deg) translateZ(1em); }
+.back{transform: rotateY(180deg) translateZ(1em); }
+.left{transform: rotateY(270deg) translateZ(1em); }
+.top{
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    background: rgb(99, 99, 99);
+    transform: translateY(-50%) rotateX(90deg);
+    box-shadow: 0 0 0.5em #000a inset;
+}
+.b0ttom{
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    bottom: 0;
+    background: #0007;
+    transform: translateY(50%) rotateX(90deg);
+    box-shadow: 0 0 0.5em #000a;
+}
+.floor{
+    width: 15em;
+    height: 15em;
+    top: 1em;
+    background-image: radial-gradient(#fff5,#000 75%), repeating-conic-gradient(from 45deg, #111 0deg 90deg, #222 90deg 180deg);
+    background-size:100%, 1em 1em;
+    position: absolute;
+    transform: translate(-50%, -50%) rotateX(90deg);
+}
