@@ -35,7 +35,7 @@ body{
     position: absolute;
     left: -.5em;
     bottom: 1em;
-    z-index: 1;
+    z-index: 99;
     background-image: radial-gradient(
         circle at top,
         var(--boxcolor),#000
