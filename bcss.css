@@ -35,7 +35,6 @@ body{
     position: absolute;
     left: -.5em;
     bottom: 1em;
-    z-index: 99;
     background-image: radial-gradient(
         circle at top,
         var(--boxcolor),#000
@@ -57,7 +56,7 @@ body{
 }
 @keyframes balls {
     0%, 8%, 93.5%, 100%{transform: scale(1); opacity: 1;}
-    50%{transform: scale(2); opacity: 0.5; animation-timing-function: ease-in;}
+    50%{transform: scale(1.5); opacity: 0.5; animation-timing-function: ease-in;}
 }
 .cube{
     width: 2em;
